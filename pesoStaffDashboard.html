@@ -423,31 +423,40 @@
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Sidebar Toggle Script -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const toggleBtn = document.getElementById('sidebarToggleBtn');
-            const collapseBtn = document.getElementById('sidebarCollapseBtn');
-            const collapseIcon = collapseBtn ? collapseBtn.querySelector('i') : null;
-            
-            function toggleSidebar(e) {
-                if (e) e.preventDefault();
-                document.body.classList.toggle('sidebar-collapsed');
+        <!-- Sidebar Toggle Script -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const toggleBtn = document.getElementById('sidebarToggleBtn');
+                const collapseBtn = document.getElementById('sidebarCollapseBtn');
+                const collapseIcon = collapseBtn ? collapseBtn.querySelector('i') : null;
                 
-                if (collapseIcon) {
-                    if (document.body.classList.contains('sidebar-collapsed')) {
-                        collapseIcon.classList.remove('bi-chevron-bar-left');
-                        collapseIcon.classList.add('bi-chevron-bar-right');
+                function toggleSidebar(e) {
+                    if (e) e.preventDefault();
+                    
+                    // Check screen width to determine the action
+                    if (window.innerWidth >= 992) {
+                        // ON DESKTOP: Shrink the sidebar
+                        document.body.classList.toggle('sidebar-collapsed');
+                        
+                        // Swap the chevron direction on the bottom button
+                        if (collapseIcon) {
+                            if (document.body.classList.contains('sidebar-collapsed')) {
+                                collapseIcon.classList.remove('bi-chevron-bar-left');
+                                collapseIcon.classList.add('bi-chevron-bar-right');
+                            } else {
+                                collapseIcon.classList.remove('bi-chevron-bar-right');
+                                collapseIcon.classList.add('bi-chevron-bar-left');
+                            }
+                        }
                     } else {
-                        collapseIcon.classList.remove('bi-chevron-bar-right');
-                        collapseIcon.classList.add('bi-chevron-bar-left');
+                        // ON MOBILE: Slide the sidebar in/out
+                        document.body.classList.toggle('sidebar-mobile-show');
                     }
                 }
-            }
 
-            if (toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
-            if (collapseBtn) collapseBtn.addEventListener('click', toggleSidebar);
-        });
-    </script>
+                if (toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
+                if (collapseBtn) collapseBtn.addEventListener('click', toggleSidebar);
+            });
+        </script>
 </body>
 </html>

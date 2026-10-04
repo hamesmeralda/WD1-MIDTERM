@@ -1707,13 +1707,22 @@ body {
     }
 }
 
-/* Responsive Hide for Mobile */
+/* Responsive Sidebar for Mobile */
 @media (max-width: 991.98px) {
     .dash-sidebar { 
-        display: none !important; 
+        transform: translateX(-100%);
+        position: fixed;
+        z-index: 1060; /* Ensures it floats above everything */
     }
+    
     .dash-main-content { 
         margin-left: 0; 
         width: 100%; 
+    }
+    
+    /* Class applied via Javascript when hamburger is clicked on mobile */
+    body.sidebar-mobile-show .dash-sidebar {
+        transform: translateX(0);
+        box-shadow: 10px 0 30px rgba(0,0,0,0.3) !important;
     }
 }
