@@ -3,7 +3,7 @@ html {
 }
 
 .hero-section {
-  background-image: url('../photos/YEP HOMEPAGE BG.png');
+  background-image: url('../photos/yep-homepage-bg.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -351,7 +351,7 @@ html {
 .text-step-green { color: #2d6a4f; }
 
 .cta-light-section {
-  background-image: url('../photos/YEP HOMEPAGE BG.png');
+  background-image: url('../photos/yep-homepage-bg.png');
   background-size: cover;
   background-position: center bottom; 
   background-repeat: no-repeat;
